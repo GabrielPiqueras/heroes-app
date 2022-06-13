@@ -7,12 +7,10 @@ export const AppRouter = () => {
     
     return (
         <Router>
-            <div>
                 <Routes>
                     <Route exact path="/login" element={ <LoginPage /> }></Route>
                     <Route path="*" element={ <DashboardRoutes /> }></Route>
                 </Routes>
-            </div>
         </Router>
     )
 }
