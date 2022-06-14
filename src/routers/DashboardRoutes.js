@@ -5,6 +5,9 @@ import { HeroPage } from "../components/heroes/HeroPage";
 import { MarvelPage } from "../components/marvel/MarvelPage";
 import { Navbar } from "../components/ui/Navbar";
 
+/* Muestra el Navbar y las rutas para cuando el usuario ha iniciado sesión, es decir, las rutas de la parte del "Dashboard".
+   Si la ruta introducida no existe, cae en la expresión regular '*' y se redirige a '/marvel' */
+
 export const DashboardRoutes = () => {
     
     return (
@@ -15,7 +18,7 @@ export const DashboardRoutes = () => {
                 <Routes>
                     <Route exact path="/marvel" element={ <MarvelPage /> }></Route>
                     <Route exact path="/dc" element={ <DcPage /> }></Route>
-                    <Route exact path="/heroe/:heroId" element={ <HeroPage /> }></Route>
+                    <Route exact path="/hero/:heroId" element={ <HeroPage /> }></Route>
                 
                     <Route path="*" element={ <Navigate to="/marvel" replace /> }></Route>
                 </Routes>
