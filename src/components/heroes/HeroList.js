@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher'
 import { HeroCard } from './HeroCard';
 
 /* Recibe una 'asociación por parámetro' y llama a getHeroesByPublisher() para obtener todos los héroes de 
-   dicha asociación.
+   dicha asociación. Memoriza los resultados mientras el publisher no cambie.
    
    Cada elemento de esta lista será un componente <HeroCard /> al cuál envío toda la información del héroe para pintar
    allí sus datos. */
 
 export const HeroList = ({ publisher }) => {
 
-  const heroes = getHeroesByPublisher( publisher );
+  const heroes = useMemo(() => getHeroesByPublisher( publisher ), [publisher]);
   
   return (
     <div>

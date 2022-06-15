@@ -9,17 +9,16 @@ import { Link } from 'react-router-dom'
 export const HeroCard = ({ id, superhero, publisher, alter_ego, first_appearance, characters }) => {
 
     return (
-        <div className="card col-md-4 mb-3" style={ {maxWidth: 540, display: 'inline-block'} }>
+        <div className="card col-md-4 mb-3 animate__animated animate__fadeIn" style={ {maxWidth: 540, display: 'inline-block'} }>
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src={`/assets/heroes/${id}.jpg`} className="img-fluid rounded-start" alt={superhero} />
+                    <img src={`/assets/heroes/${id}.jpg`} className="img-fluid rounded-start animate__animated animate__fadeIn" alt={superhero} />
                 </div>
                 <div className="col-md-8">
                 <div className="card-body">
                     <h5 className="card-title"> { superhero } </h5>
                     <p className="card-text">{ alter_ego }</p>
                     <p className="card-text">
-
                         {
                             ( alter_ego !== characters )
                             &&
