@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
-import { heroes } from '../../data/Heroes'
+import React, { useState } from 'react';
+import { heroes } from '../../data/Heroes';
 import { useForm } from '../../hooks/useForm';
 import { searchHeroes } from '../../selectors/searchHeroes';
 import { HeroCard } from '../heroes/HeroCard';
-import { useParams } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const SearchPage = () => {
+    
+    const navigate = useNavigate();
 
-    const [ results, setResults ] = useState(heroes);
+    const search = useLocation().search;
+    const q = new URLSearchParams(search).get('q');
 
-    const [ formValues, handleInputChange ] = useForm({search: '',});
-    const { search } = formValues;
+    const [ formValues, handleInputChange ] = useForm({ search: q });
+    const { searchText } = formValues;
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const result = searchHeroes(search);
 
-        setResults(result);
+        navigate({
+            pathname: '/search',
+            search: `q=${searchText}`
+        });
     }
 
     return (
@@ -31,8 +36,8 @@ export const SearchPage = () => {
 
                     <form onSubmit={ handleSearch }>
                         <input
-                            name='search'
-                            defaultValue={ search }
+                            name='searchText'
+                            defaultValue={ searchText }
                             type='text'
                             onChange={ handleInputChange }
                             placeholder='Find your hero'
