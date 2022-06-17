@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
-import { heroes } from '../../data/Heroes';
+import React, { useMemo } from 'react';
 import { useForm } from '../../hooks/useForm';
-import { searchHeroes } from '../../selectors/searchHeroes';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 import { HeroCard } from '../heroes/HeroCard';
-import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const SearchPage = () => {
     
     const navigate = useNavigate();
 
+    // Obtener valor del parámetro 'q' en la url (Ej: '?q=batman') y hacer la consulta para buscar esos héroes
+    // useMemo memoriza la función, por tanto se disparará solo cuando cambie el 'q', si buscamos 'batman' dos veces, solo ejecutará la primera.
     const search = useLocation().search;
     const q = new URLSearchParams(search).get('q');
+    const results = useMemo(() => getHeroesByName(q), [q]);
 
-    const [ formValues, handleInputChange ] = useForm({ search: q });
+    // Guardar valor del parámetro en el input porque se ha buscado eso
+    const [ formValues, handleInputChange ] = useForm({ searchText: q });
     const { searchText } = formValues;
 
+    // Si se envía el formulario, cargamos la ruta pasando el nuevo parámetro 'q', repitiendo el proceso anterior
     const handleSearch = (e) => {
         e.preventDefault();
 
@@ -59,9 +63,12 @@ export const SearchPage = () => {
                     <hr />
 
                     {
-                        results.length === 0
+                        // Si 'q' no es null, se buscó algo y no hubo resultados, muestro mensaje de error.
+                        (q && q !== '' && results.length === 0)
                         ?
-                            <p>No se encontraron resultados.</p>
+                            <div className='alert alert-danger'>
+                                No se encontraron héroes con <b>{ q }</b>.
+                            </div>
                         :
                             results.map(hero =>
                                 <HeroCard key={hero.id} {...hero} />
