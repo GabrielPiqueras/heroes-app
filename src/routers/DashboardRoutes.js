@@ -1,16 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Routes, Route, Navigate } from "react-router-dom";
 import { DcPage } from "../components/dc/DcPage";
 import { HeroPage } from "../components/heroes/HeroPage";
 import { MarvelPage } from "../components/marvel/MarvelPage";
 import { Navbar } from "../components/ui/Navbar";
 import { SearchPage } from "../components/search/SearchPage";
+import { AuthContext } from "../auth/AuthContext";
 
 /* Muestra el Navbar y las rutas para cuando el usuario ha iniciado sesión, es decir, las rutas de la parte del "Dashboard".
    Si la ruta introducida no existe, cae en la expresión regular '*' y se redirige a '/marvel' */
 
 export const DashboardRoutes = () => {
     
+    // const authContext = useContext(AuthContext);
+    // const { user } = authContext;
+    // console.log(user);   
+
     return (
         <>
             <Navbar />
