@@ -4,27 +4,41 @@ import { AuthContext } from '../../auth/AuthContext';
 import { types } from '../../types/types';
 import './login.css';
 
+/* 
+    1. Pone el fondo con un useEffect() para evitar que salga en otras páginas... (tratar de mejorar esto)
+    2. Crea referencias a los input de username y password.
+    3. Obtiene el estado 'user' propagado desde <HeroesApp /> y el 'dispatch' para ejecutar acciones.
+       Dicho estado dice si hay un usuario con sesión iniciada o no (aquí no debería, teniendo en cuenta la funcionalidad de las rutas)
+    4. Al hacer submit del formulario, se detiene el envío.
+    5. Se obtienen los valores de los input por las referencias.
+    6. Se obtiene la última ruta (Dashboard) en la que estuvo el usuario antes de cerrar sesión, si no existe, será '/'.
+    7. Dispara la acción de tipo 'login' mandando los datos del usuario.
+    8. Se navega a la ruta.
+*/
+
 export const LoginPage = () => {
+  
+  const navigate = useNavigate();
   const inputUsername = useRef();
   const inputPassword = useRef();
-  const navigate = useNavigate();
 
   const authContext = useContext(AuthContext); 
   const { user, dispatch } = authContext;
-  console.log(user);
 
   const handleLogin = (e) => {
     e.preventDefault();
 
     const username = inputUsername.current.value;
     const password = inputPassword.current.value;
+    const lastPath = localStorage.getItem('lastPath') || '/';
 
     dispatch({
       type: types.login,
       payload: username
     });
 
-    navigate('/', { replace: true });
+    navigate(lastPath, { replace: true });
+    // navigate('/', { replace: true });
   }
 
   // Para poner fondo en el login...
