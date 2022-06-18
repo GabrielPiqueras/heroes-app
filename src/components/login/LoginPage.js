@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthContext';
-import { useForm } from '../../hooks/useForm';
 import { types } from '../../types/types';
 import './login.css';
 
@@ -14,24 +13,17 @@ export const LoginPage = () => {
   const { user, dispatch } = authContext;
   console.log(user);
 
-  // const [ formValues, handleInputChange ] = useForm({username: '', password: ''});
-  // const { username, password } = formValues;
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const username = inputUsername.current.value;
     const password = inputPassword.current.value;
-    
-    // const loginUser = {
-    //   name: username
-    // }
 
     dispatch({
       type: types.login,
       payload: username
     });
-    
+
     navigate('/', { replace: true });
   }
 
@@ -45,7 +37,7 @@ export const LoginPage = () => {
   return (
     <div id='login-page' className='animate__animated animate__backInUp'>
       <div className="login-form">
-        <form action="/" method="post" onSubmit={ handleSubmit }>
+        <form action="/" method="post" onSubmit={ handleLogin }>
             <h2 className="text-center">Iniciar sesión</h2>       
             <div className="form-group">
                 <input

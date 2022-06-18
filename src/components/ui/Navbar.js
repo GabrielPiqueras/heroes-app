@@ -1,12 +1,29 @@
 import { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
+
+/*
+    1. Muestra el navbar del 'Dashboard', con omponentes <Link /> a rutas.
+    2. Obtiene el contexto propagado desde <HeroesApp /> para saber si hay un usuario logueado.
+    3. Si está logueado, muestra el nombre del usuario y el botón de 'Logout', si no, el botón de 'Login'.
+    4. Si se cierra sesión, se ejecuta una acción de tipo 'logout', se borra al usuario del localStorage
+       y se redirige a la página del login nuevamente.
+*/
 
 export const Navbar = () => {
 
+    const navigate = useNavigate();
+
     const authContext = useContext(AuthContext);
-    const { user, user: { name, logged }} = authContext;
-    console.log(user);
+    const { user: { name, logged }, dispatch } = authContext;
+
+    const handleLogout = () => {
+        dispatch({type: types.logout});
+
+        localStorage.removeItem('user');
+        navigate('/login', { replace: true });
+    }
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -51,13 +68,19 @@ export const Navbar = () => {
                         (logged)
                         ?
                             (
-                                <NavLink  className="nav-item nav-link" to="/logout">
-                                    Logout
-                                </NavLink>
+                                <>
+                                    <span id='navbar-username' className="nav-item nav-link text-info">{ name }</span>
+                                    {/* <NavLink onClick={ handleLogout } className="nav-item nav-link" to="/logout">
+                                        Logout
+                                    </NavLink> */}
+                                    <button onClick={ handleLogout } className="nav-item nav-link btn" style={{fontWeight: 'normal'}}>
+                                        Logout
+                                    </button>
+                                </>
                             )
                         :
                             (
-                                <NavLink  className="nav-item nav-link" to="/login">
+                                <NavLink className="nav-item nav-link" to="/login">
                                     Login
                                 </NavLink>
                             )
