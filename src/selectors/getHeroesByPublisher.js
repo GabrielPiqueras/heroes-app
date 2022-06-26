@@ -13,4 +13,4 @@ export const getHeroesByPublisher = (publisher) => {
     }
     
     return heroes.filter(hero => publisher === hero.publisher);
-}
+} 

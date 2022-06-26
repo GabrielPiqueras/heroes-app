@@ -12,12 +12,12 @@ export const Private = ({ isAuth, component: Component }) => {
 
     const { pathname } = useLocation();
     localStorage.setItem('lastPath', pathname);
-    
+     
     return (
         ( isAuth )
         ? <Component />
         : <Navigate to='/login' />
-    )
+    ) 
 }
 
 Private.propTypes = {

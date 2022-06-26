@@ -4,7 +4,7 @@ import { types } from '../types/types';
 //     name: 'Gabriel',
 //     logged: true
 // }
-
+ 
 export const authReducer = ( state = [], action ) => {
 
     switch (action.type) {

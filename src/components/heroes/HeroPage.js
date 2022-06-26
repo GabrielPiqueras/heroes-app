@@ -17,7 +17,7 @@ export const HeroPage = () => {
   if (!hero) {
     return <Navigate to='/' />
   }
-
+ 
   const { id, superhero, publisher, alter_ego, first_appearance, characters } = hero;
   
   return (

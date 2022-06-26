@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 /* Pinta los valores del héroe en una tarjeta de bootstrap.
    Si el alter_ego es igual a los characters, no hace falta mostrar el personaje interpretado.
    Pero si es diferente es que tiene más personajes interpretados, ahí si los mostramos.
-*/
+*/ 
 
 export const HeroCard = ({ id, superhero, publisher, alter_ego, first_appearance, characters }) => {
 

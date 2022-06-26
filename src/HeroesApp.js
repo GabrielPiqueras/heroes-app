@@ -4,7 +4,7 @@ import { AuthContext } from './auth/AuthContext';
 import { authReducer } from './auth/authReducer';
 
 import './css/styles.css';
-
+ 
 /*
   1. Si hay una sesion iniciada porque existe 'user' en localStorage, obtengo sus datos
      si no, un objeto con el login en false. Inicializo con dichos datos el reducer.

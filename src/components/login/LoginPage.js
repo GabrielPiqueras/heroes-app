@@ -40,7 +40,7 @@ export const LoginPage = () => {
     navigate(lastPath, { replace: true });
     // navigate('/', { replace: true });
   }
-
+ 
   // Para poner fondo en el login...
   useEffect(() => {
     document.querySelector('body').classList.add('with-bg');

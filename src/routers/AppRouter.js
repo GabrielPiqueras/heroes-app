@@ -7,7 +7,7 @@ import { Private } from './Private';
 import { Public } from './Public';
 
 export const AppRouter = () => {
-    
+     
     const authContext = useContext(AuthContext);
     const { user: { logged }} = authContext;
 

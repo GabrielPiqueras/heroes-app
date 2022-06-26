@@ -14,4 +14,4 @@ export const Public = ({ isAuth, component: Component }) => {
 Public.propTypes = {
     isAuth: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired
-}
+}   

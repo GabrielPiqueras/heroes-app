@@ -10,7 +10,7 @@ import { SearchPage } from "../components/search/SearchPage";
    Si la ruta introducida no existe, cae en la expresión regular '*' y se redirige a '/marvel' */
 
 export const DashboardRoutes = () => {  
-    
+     
     return (
         <>
             <Navbar />

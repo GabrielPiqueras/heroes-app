@@ -17,7 +17,7 @@ export const SearchPage = () => {
     // Guardar valor del parámetro en el input porque se ha buscado eso
     const [ formValues, handleInputChange ] = useForm({ searchText: q });
     const { searchText } = formValues;
-
+ 
     // Si se envía el formulario, cargamos la ruta pasando el nuevo parámetro 'q', repitiendo el proceso anterior
     const handleSearch = (e) => {
         e.preventDefault();

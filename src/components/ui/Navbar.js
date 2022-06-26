@@ -9,7 +9,7 @@ import { types } from '../../types/types';
     3. Si está logueado, muestra el nombre del usuario y el botón de 'Logout', si no, el botón de 'Login'.
     4. Si se cierra sesión, se ejecuta una acción de tipo 'logout', se borra al usuario del localStorage
        y se redirige a la página del login nuevamente.
-*/
+*/ 
 
 export const Navbar = () => {
 
@@ -19,10 +19,11 @@ export const Navbar = () => {
     const { user: { name, logged }, dispatch } = authContext;
 
     const handleLogout = () => {
+        alert('Hola')
         dispatch({type: types.logout});
 
         localStorage.removeItem('user');
-        navigate('/login', { replace: true });
+        navigate('/logout', { replace: true });
     }
 
     return (
