@@ -26,7 +26,7 @@ export const HeroPage = () => {
 
         <div className='row'>
           <div className='col-md-6'>
-            <img src={`/assets/heroes/${id}.jpg`} className='animate__animated animate__fadeInLeft' alt={ superhero } />
+            <img src={`${process.env.PUBLIC_URL}/assets/heroes/${id}.jpg`} className='animate__animated animate__fadeInLeft' alt={ superhero } />
           </div>
           <div className='col-md-6'>
             <ul className='list-group list-group-flush'>

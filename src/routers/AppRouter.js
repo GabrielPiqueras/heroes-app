@@ -12,7 +12,7 @@ export const AppRouter = () => {
     const { user: { logged }} = authContext;
 
     return (
-        <Router>
+        <Router basename='/heroes-app'>
             <Routes>
                 <Route exact path="/login" element={ <Public isAuth={ logged } component={ LoginPage } /> }></Route>
                 <Route path="*" element={ <Private isAuth={ logged } component={ DashboardRoutes } /> }></Route>

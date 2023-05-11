@@ -12,7 +12,7 @@ export const HeroCard = ({ id, superhero, publisher, alter_ego, first_appearance
         <div className="card col-md-4 mb-3 animate__animated animate__fadeIn" style={ {maxWidth: 540, display: 'inline-block'} }>
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src={`/assets/heroes/${id}.jpg`} className="img-fluid rounded-start animate__animated animate__fadeIn" alt={superhero} />
+                    <img src={`${process.env.PUBLIC_URL}/assets/heroes/${id}.jpg`} className="img-fluid rounded-start animate__animated animate__fadeIn" alt={superhero} />
                 </div>
                 <div className="col-md-8">
                 <div className="card-body">

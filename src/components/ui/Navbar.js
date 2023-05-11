@@ -19,7 +19,6 @@ export const Navbar = () => {
     const { user: { name, logged }, dispatch } = authContext;
 
     const handleLogout = () => {
-        alert('Hola')
         dispatch({type: types.logout});
 
         localStorage.removeItem('user');
