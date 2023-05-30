@@ -59,6 +59,7 @@ export const LoginPage = () => {
                   name="username"
                   ref={ inputUsername }
                   // defaultValue={ username }
+                  defaultValue='prueba@demo.es'
                   // onChange={ handleInputChange }
                   className="form-control"
                   placeholder="Usuario"
@@ -69,6 +70,7 @@ export const LoginPage = () => {
                   type="password"
                   name="password"
                   ref={ inputPassword }
+                  defaultValue='12345678'
                   // defaultValue={ password }
                   // onChange={ handleInputChange }
                   className="form-control"

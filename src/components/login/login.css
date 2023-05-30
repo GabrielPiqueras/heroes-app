@@ -5,8 +5,9 @@ html, body {
 
 body.with-bg {
     background-image: url('/public/assets/img/login-wallpaper.jpg');
-    background-position-y: 20%;
+    background-position-y: 40%;
     background-repeat: no-repeat;
+    background-position-x: 40%;
 }
  
 .login-form {
